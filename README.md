@@ -51,3 +51,6 @@ data ={"model_key": "BMW",
 r = requests.post(url = url, json = data)
 
 print(r.json())
+
+The 'DockerfileAPI' & the 'appapi.py' files are for the FASTApi app and the other ones (DockerFile & app.py) are for the Streamlit Dashboard.
+
