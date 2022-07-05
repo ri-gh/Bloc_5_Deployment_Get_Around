@@ -53,5 +53,7 @@ r = requests.post(url = url, json = data)
 print(r.json())
 
 
-=> The 'DockerfileAPI' & the 'appapi.py' files are for the FastApi app and the other ones (DockerFile & app.py) are for the Streamlit Dashboard.
+=> The 'DockerfileAPI' , 'requirementsapi.txt' & the 'appapi.py' files are for the FastApi app (feel free to rename them)
+
+the other ones (DockerFile, requirements.txt & app.py) are for the Streamlit Dashboard.
 
