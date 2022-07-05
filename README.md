@@ -1,4 +1,5 @@
 # Bloc_5_Deployment_Get_Around
+My video link : https://share.vidyard.com/watch/oZxZeAGPKwryNXaWddiguJ?
 ## Deployment of a Dashboard &amp; an API on the web
 
 GetAround is the Airbnb for cars. You can rent cars from any person for a few hours to a few days!
