@@ -1,5 +1,5 @@
 # Bloc_5_Deployment_Get_Around
-Deployment of a Dashboard &amp; an API on the web
+## Deployment of a Dashboard &amp; an API on the web
 
 GetAround is the Airbnb for cars. You can rent cars from any person for a few hours to a few days!
 The checkin and checkout of our rentals can be done with three distinct flows:
@@ -52,5 +52,6 @@ r = requests.post(url = url, json = data)
 
 print(r.json())
 
-The 'DockerfileAPI' & the 'appapi.py' files are for the FASTApi app and the other ones (DockerFile & app.py) are for the Streamlit Dashboard.
+
+=> The 'DockerfileAPI' & the 'appapi.py' files are for the FastApi app and the other ones (DockerFile & app.py) are for the Streamlit Dashboard.
 
