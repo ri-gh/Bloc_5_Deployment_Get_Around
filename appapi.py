@@ -2,7 +2,7 @@ import uvicorn
 import pandas as pd 
 import numpy as np
 from pydantic import BaseModel
-from typing import Literal, List, Union
+from typing import Literal, Union
 from fastapi import FastAPI
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -211,15 +211,17 @@ async def predict(predictionFeatures: PredictionFeatures):
 
     """
   
-
+#we train the model & use his predictions to the predict endpoint of our API
     data = pd.read_csv("get_around_pricing_project.csv")
     data = data.drop(labels = ['Unnamed: 0'], axis = 1)
     data = data[data['mileage'] >= 0]
     data[['model_key','fuel','paint_color','car_type']] = data[['model_key','fuel','paint_color','car_type']].astype('string')
 
+#separate features with target
     X = data.iloc[:, :-1]
     y = data.iloc[:, -1:]
 
+#finding numerical and categorical value to encode or normalize them
     numeric_features = []
     categorical_features = []
     for i,t in X.dtypes.iteritems():
@@ -227,7 +229,8 @@ async def predict(predictionFeatures: PredictionFeatures):
             numeric_features.append(i)
         else :
             categorical_features.append(i)
-    
+
+#make the train /test split
     X_train, X_test, Y_train, Y_test = train_test_split(X, y,test_size=0.2,
                                                         random_state=0)
     
@@ -254,10 +257,13 @@ async def predict(predictionFeatures: PredictionFeatures):
     X_train = preprocessor.fit_transform(X_train)
     X_test = preprocessor.transform(X_test)
 
+#we train the model
     regressor = LinearRegression()
     model = regressor.fit(X_train, Y_train)
    
-    
+ #we apply the same preprocessing on datas that would be submit to the API
+ #in a POST request to predict a rental price per day
+     
     df = pd.DataFrame(dict(predictionFeatures), index=[0])
     numeric_features = []
     categorical_features = []
